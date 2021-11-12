@@ -10,7 +10,7 @@ app.use(cookieParser());
 //cors
 var cors = require("cors");
 app.use(cors({
-  origin: 'https://gameback-end.herokuapp.com'
+  origin: 'http://localhost:3000'
 }))
 
 
