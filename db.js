@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect(`mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`,{useNewUrlParser:true,useUnifiedTopology:true},
+mongoose.connect(`mongodb+srv://smsRed:tTWR38dwOR3mmvXG@cluster0.xx6st.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{useNewUrlParser:true,useUnifiedTopology:true},
     err => {
         if (!err)
             console.log('Mongodb connection succeeded.')
