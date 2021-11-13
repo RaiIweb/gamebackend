@@ -6,7 +6,7 @@ var { userLogins } = require("../models/userLogin.js")
 
 
 const checkCookie = async (req, res, next) => {
-  const loginCookie = req.cookies.login;
+  const cookie = req.cookies.login;
 
   const user = await userLogins.findOne({ cookie })
 
