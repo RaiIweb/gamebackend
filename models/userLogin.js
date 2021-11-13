@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 var userLogins = mongoose.model('userLogin',
 {
-    email : {type:String  ,required: true} ,
+    email : {type:String , unique:false ,required: true} ,
     cookie : {type:String },
     expireAt : {
         type: Date,

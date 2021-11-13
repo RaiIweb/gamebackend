@@ -63,7 +63,7 @@ app.get("/", async (req, res) => {
     if(user) {
 
       
-      res.json(req.cookies)
+      res.json({ login : Boolean(req.cookies)})
     }
     else {
       res.send({})
