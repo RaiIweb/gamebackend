@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
   const user = await userLogins.findOne({ cookie  })
   
   if (user) {
-
+    await user.remove().exec()
     res.json('session exists')
 
   } else {
