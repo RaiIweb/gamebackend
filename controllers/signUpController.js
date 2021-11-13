@@ -2,6 +2,7 @@ const express = require("express")
 var router = express.Router()
 
 var { userSignups } = require("../models/userSignup.js")
+var { userScores } = require("../models/userScores.js")
 
 router.post("/", async (req, res) => {
   const { email = undefined, password = undefined } = req.body;
@@ -21,15 +22,23 @@ router.post("/", async (req, res) => {
 
     console.log('user not exists')
 
-    console.log(email)
     var newRecord = new userSignups({
       //saving in signup table in db
       email: email,
       password: password,
     })
+    
+    var scoreRecord = new userScores({
+      //saving in signup table in db
+      email: email,
+      wins: 0,
+      defeats: 0
+    })
   
 
+    await scoreRecord.save()
     await newRecord.save()
+
     res.json('user saved')
   }
 })

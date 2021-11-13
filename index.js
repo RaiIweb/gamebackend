@@ -33,6 +33,7 @@ const port = process.env.PORT || 8000;
 var loginRoute = require("./controllers/loginController");
 var signUpRoute = require("./controllers/signUpController");
 var logoutRoute = require("./controllers/logoutController");
+var scoreRoute = require("./controllers/scoreController");
 
 
 //signup
@@ -44,9 +45,7 @@ app.use("/login",  loginRoute);
 
 
 //update
-app.use('/update' ,  (req , res) => {
-  
-})
+app.use('/update' , scoreRoute)
 
 
 //logout

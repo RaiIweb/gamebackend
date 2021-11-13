@@ -1,29 +1,45 @@
 const express = require("express")
 var router = express.Router()
 
-var { userLogins } = require("../models/userLogin.js")
+var { userSignups } = require("../models/userSignup.js")
+var { userScores } = require("../models/userScores.js")
 
 router.post("/", async (req, res) => {
-  const { login = undefined  } = req.cookies;
+  const { email = undefined, password = undefined } = req.body;
 
+  if(!email) res.json('email required')
+  if(!password) res.json('password required')
 
-  if(!login) res.json('already logout')
-
-  let cookie = login
+  if(password.length < 8) res.json('password  must be more than 8 character')
+  const user = await userSignups.findOne({ email })
   
-  const user = await userLogins.findOneAndDelete({ cookie  })
-  
+  console.log(user)
   if (user) {
 
-    let obj = {
-      logout : true
-    }
-    res.clearCookie("login", {httpOnly: true, secure: true, sameSite: "none", maxAge: 120000})
-    res.json(obj)
+    res.json('user exists')
 
   } else {
 
-    res.json('session not exists')
+    console.log('user not exists')
+
+    var newRecord = new userSignups({
+      //saving in signup table in db
+      email: email,
+      password: password,
+    })
+    
+    var scoreRecord = new userScores({
+      //saving in signup table in db
+      email: email,
+      wins: 0,
+      defeats: 0
+    })
+  
+
+    await scoreRecord.save()
+    await newRecord.save()
+
+    res.json('user saved')
   }
 })
 
