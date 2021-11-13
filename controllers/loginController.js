@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       })
 
       await newRecord.save()
-      res.cookie(`login`, newId, {httpOnly: false, secure: false, sameSite: "none"})
+      res.cookie(`login`, newId, {httpOnly: false, secure: true, sameSite: "none"})
       return res.json({ login: true })
 
     } else {
