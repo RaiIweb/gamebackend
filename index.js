@@ -58,7 +58,7 @@ app.get("/", async (req, res) => {
   if(req.cookies) {
 
     console.log(req?.cookies);
-    res.json("hi welcome to game" + req?.cookies);
+    res.json(req?.cookies);
   } else {
     res.send('no cookies')
   }
