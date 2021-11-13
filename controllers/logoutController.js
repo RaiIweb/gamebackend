@@ -6,8 +6,11 @@ var { userLogins } = require("../models/userLogin.js")
 router.post("/", async (req, res) => {
   const { login = undefined  } = req.cookies;
 
+  let obj = {
+    logout : true
+  }
 
-  if(!login) res.json('already logout')
+  if(!login) res.json(obj)
 
   let cookie = login
   
@@ -15,9 +18,7 @@ router.post("/", async (req, res) => {
   
   if (user) {
 
-    let obj = {
-      logout : true
-    }
+    
     res.clearCookie("login", {httpOnly: true, secure: true, sameSite: "none", maxAge: 120000})
     res.json(obj)
 
