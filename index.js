@@ -55,9 +55,8 @@ app.use("/logout", (req , res) => {
 
 
 app.get("/", async (req, res) => {
-  res.cookie(`login`, 'newId', {httpOnly: false, sameSite: "none"})
-
-  res.send("hi welcome to game");
+  console.log(req.cookies);
+  res.json("hi welcome to game" + req.cookies);
 })
 
 
