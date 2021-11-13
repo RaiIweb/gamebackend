@@ -58,7 +58,7 @@ app.use("/logout", logoutRoute)
 app.get("/", async (req, res) => {
   if(req.cookies) {
 
-    const user = await userLogins.findOne({ cookie })
+    const user = await userLogins.findOne({ cookie: req.cookies.login })
 
     if(user) {
 
