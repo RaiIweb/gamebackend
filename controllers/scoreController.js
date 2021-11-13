@@ -41,7 +41,7 @@ router.post("/", checkCookie ,async (req, res) => {
 
     res.json('score updated')
   
-  } else {
+  } else if( status == 'loose') {
 
     scores.defeats = scores.defeats + 1
     await scores.save()
