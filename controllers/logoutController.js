@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
 
   } else {
 
-    res.json('session not exists')
+    res.json(obj)
   }
 })
 
