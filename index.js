@@ -1,6 +1,9 @@
 //express
 const express = require("express");
 const cookieParser = require('cookie-parser')
+const mongoose = require('mongoose')
+
+var { userLogins } = require("./models/userLogin.js")
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -55,7 +58,18 @@ app.use("/logout", logoutRoute)
 app.get("/", async (req, res) => {
   if(req.cookies) {
 
-    res.json(req.cookies)
+    const user = await userLogins.findOne({ cookie })
+
+    if(user) {
+
+      
+      res.json(req.cookies)
+    }
+    else {
+      res.send('no cookies')
+
+    }
+
   } else {
     res.send('no cookies')
   }
