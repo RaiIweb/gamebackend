@@ -57,8 +57,7 @@ app.use("/logout", (req , res) => {
 app.get("/", async (req, res) => {
   if(req.cookies) {
 
-    console.log(req?.cookies);
-    res.json(req?.cookies);
+    res.send('cookies')
   } else {
     res.send('no cookies')
   }
