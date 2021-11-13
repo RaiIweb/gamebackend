@@ -66,12 +66,12 @@ app.get("/", async (req, res) => {
       res.json(req.cookies)
     }
     else {
-      res.send('no cookies')
+      res.send({})
 
     }
 
   } else {
-    res.send('no cookies')
+    res.send({})
   }
 })
 
