@@ -16,7 +16,7 @@ const checkCookie = async (req, res, next) => {
     
   }
   else {
-    res.status(401).send("Invalid token");
+    res.status(401).json({ response: 'invalid cookie'});
 
   }
   
