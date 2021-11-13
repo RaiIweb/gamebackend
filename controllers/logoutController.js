@@ -15,8 +15,11 @@ router.post("/", async (req, res) => {
   
   if (user) {
 
+    let obj = {
+      logout : true
+    }
     res.clearCookie("login")
-    res.json('session logged out')
+    res.json(obj)
 
   } else {
 
