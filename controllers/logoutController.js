@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
     let obj = {
       logout : true
     }
-    res.clearCookie("login")
+    res.clearCookie("login", {httpOnly: true, secure: true, sameSite: "none", maxAge: 120000})
     res.json(obj)
 
   } else {
