@@ -10,9 +10,17 @@ app.use(cookieParser());
 //cors
 var cors = require("cors");
 app.use(cors({
-  origin: 'https://raiiweb.github.io'
+  origin: 'https://raiiweb.github.io',
+  credentials : true
 }))
 
+app.use(function (req, res, next) {	
+  res.setHeader('Access-Control-Allow-Origin', 'https://raiiweb.github.io');    
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');   
+  res.setHeader('Access-Control-Allow-Credentials', true);    
+  next();
+})
 
 
 //db
