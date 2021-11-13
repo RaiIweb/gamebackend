@@ -20,6 +20,8 @@ router.post("/", async (req, res) => {
     if (user) {
       const newId = uuidv4()
 
+      //const existingSession = await userLogins.findOne({ email })
+
       var newRecord = new userLogins({
         //saving in signup table in db
         email: email,
