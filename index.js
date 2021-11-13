@@ -10,7 +10,7 @@ app.use(cookieParser());
 //cors
 var cors = require("cors");
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'https://raiiweb.github.io'
 }))
 
 
