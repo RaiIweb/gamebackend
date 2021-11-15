@@ -15,12 +15,12 @@ router.post("/", async (req, res) => {
   
   console.log(user)
   if (user) {
-
-    res.json('user exists')
+    
+    res.json({ status : 'user exists'})
 
   } else {
 
-    console.log('user not exists')
+
 
     var newRecord = new userSignups({
       //saving in signup table in db
@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     await scoreRecord.save()
     await newRecord.save()
 
-    res.json('user saved')
+    res.json({ status : 'user saved'})
   }
 })
 
