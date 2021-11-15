@@ -7,7 +7,7 @@ var userLogins = mongoose.model('userLogin',
     expireAt : {
         type: Date,
         default: Date.now,
-        index: { expires: '2m' }, 
+        index: { expires: '8m' }, 
     }
         
 },'userLogin')
