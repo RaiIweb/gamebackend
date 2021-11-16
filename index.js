@@ -37,6 +37,7 @@ var loginRoute = require("./controllers/loginController");
 var signUpRoute = require("./controllers/signUpController");
 var logoutRoute = require("./controllers/logoutController");
 var scoreRoute = require("./controllers/scoreController");
+var rankingsRoute = require("./controllers/gamerankingsController");
 
 
 //signup
@@ -49,6 +50,9 @@ app.use("/login",  loginRoute);
 
 //update
 app.use('/update' , scoreRoute)
+
+//rankings
+app.use('/rankings' , rankingsRoute)
 
 
 //logout
