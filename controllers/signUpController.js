@@ -5,10 +5,11 @@ var { userSignups } = require("../models/userSignup.js")
 var { userScores } = require("../models/userScores.js")
 
 router.post("/", async (req, res) => {
-  const { email = undefined, password = undefined } = req.body;
+  const { email = undefined, password = undefined, username = undefined } = req.body;
 
   if(!email) res.json('email required')
   if(!password) res.json('password required')
+  if(!username) res.json('username required')
 
   if(password.length < 8) res.json('password  must be more than 8 character')
   const user = await userSignups.findOne({ email })
@@ -26,13 +27,15 @@ router.post("/", async (req, res) => {
       //saving in signup table in db
       email: email,
       password: password,
+      username: username
     })
     
     var scoreRecord = new userScores({
       //saving in signup table in db
       email: email,
       wins: 0,
-      defeats: 0
+      defeats: 0,
+      username: username
     })
   
 
